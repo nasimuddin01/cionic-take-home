@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1 class="app-name">Cionic App</h1>
+      <h1 class="app-name">Cionic App ✨</h1>
       <br />
       <form class="form-inputs" @submit.prevent="addToCart">
         <div class="form-inputs-group">
@@ -97,10 +97,17 @@
         </div>
       </form>
     </div>
+    <vue-confirm-dialog />
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import VueConfirmDialog from "vue-confirm-dialog";
+
+Vue.use(VueConfirmDialog);
+Vue.component("vue-confirm-dialog", VueConfirmDialog.default);
+
 export default {
   name: "App",
   data() {
@@ -127,12 +134,26 @@ export default {
       })
         .then((response) => {
           if (response.status === 200) {
-            alert("Added to cart!");
+            this.$confirm({
+              title: "Success 🎉",
+              message: "Your order has been added to cart.",
+              button: {
+                yes: "Okay",
+              },
+            });
           } else {
             throw new Error();
           }
         })
-        .catch(() => alert("Error adding to cart!"));
+        .catch(() => {
+          this.$confirm({
+            title: "Error 😢",
+            message: "Your order could not be added to cart. Retry again.",
+            button: {
+              yes: "Okay",
+            },
+          });
+        });
     },
   },
 };
