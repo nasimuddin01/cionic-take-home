@@ -93,7 +93,34 @@
         </div>
         <br />
         <div class="actions">
-          <button type="submit">Add to Cart</button>
+          <button v-if="!isApiCallRunning" type="submit">Add to Cart</button>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            height="40px"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="xMidYMid"
+          >
+            <circle
+              cx="50"
+              cy="50"
+              fill="none"
+              stroke="#004B63"
+              stroke-width="10"
+              r="35"
+              stroke-dasharray="164.93361431346415 56.97787143782138"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                repeatCount="indefinite"
+                dur="1s"
+                values="0 50 50;360 50 50"
+                keyTimes="0;1"
+              ></animateTransform>
+            </circle>
+          </svg>
         </div>
       </form>
     </div>
@@ -116,10 +143,12 @@ export default {
       leg: "left",
       upperLegSize: "",
       lowerLegSize: "",
+      isApiCallRunning: false,
     };
   },
   methods: {
     addToCart() {
+      this.isApiCallRunning = true;
       fetch("https://cionic-api.onrender.com", {
         method: "POST",
         headers: {
@@ -153,6 +182,9 @@ export default {
               yes: "Okay",
             },
           });
+        })
+        .finally(() => {
+          this.isApiCallRunning = false;
         });
     },
   },
