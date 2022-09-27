@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     addToCart() {
-      fetch("http://localhost:3001", {
+      fetch("https://cionic-api.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
