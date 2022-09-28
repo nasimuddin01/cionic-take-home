@@ -276,6 +276,7 @@ body {
       display: block;
       width: 100px;
       padding: 1rem 0.5rem;
+      color: #ecf5fd !important;
       &::before {
         content: "";
         display: grid;
