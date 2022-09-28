@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="form-inputs-group form-inputs-group--middle">
-          <h3>3. Select which leg.</h3>
+          <h3>2. Select which leg.</h3>
           <div class="input-group card-group">
             <div class="input--leg">
               <input
@@ -62,7 +62,7 @@
           <h3>3. Input your size.</h3>
           <div class="input-group">
             <div class="input--size">
-              <label for="upper-leg">Upper Leg(Inches)</label>
+              <label for="upper-leg">Upper Leg (Inches)</label>
               <input
                 v-model="upperLegSize"
                 type="number"
@@ -76,7 +76,7 @@
               />
             </div>
             <div class="input--size">
-              <label for="lower-leg">Lower Leg(Inches)</label>
+              <label for="lower-leg">Lower Leg (Inches)</label>
               <input
                 v-model="lowerLegSize"
                 type="number"
@@ -162,6 +162,7 @@ export default {
         }),
       })
         .then((response) => {
+          // Response status is random. It could be either `200` or `404`
           if (response.status === 200) {
             this.$confirm({
               title: "Success 🎉",
@@ -220,17 +221,6 @@ body {
 .app-name {
   margin: 0;
 }
-@media (min-width: 761px) {
-  .form-inputs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0.5rem;
-    .actions {
-      grid-column: 1 / 4;
-      text-align: center;
-    }
-  }
-}
 
 .form-inputs-group {
   background: #ecf5fd;
@@ -248,12 +238,6 @@ body {
   }
   .input-group {
     padding: 1rem 0.5rem;
-  }
-}
-@media (min-width: 761px) {
-  .form-inputs-group--middle {
-    border-left: none;
-    border-right: none;
   }
 }
 
@@ -436,6 +420,24 @@ input[type="number"] {
     &:hover {
       background: rgba(#caf1ff, 0.6);
     }
+  }
+}
+
+@media (min-width: 761px) {
+  .form-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.5rem;
+    .actions {
+      grid-column: 1 / 4;
+      text-align: center;
+    }
+  }
+}
+@media (min-width: 761px) {
+  .form-inputs-group--middle {
+    border-left: none;
+    border-right: none;
   }
 }
 </style>
