@@ -256,6 +256,7 @@ body {
 .input--color {
   input[type="radio"] {
     display: none;
+    // Transforming simple radio input to round shape
     &:not(:checked) + label {
       display: block;
       width: 100px;
@@ -278,6 +279,7 @@ body {
         }
       }
     }
+    // Transforming simple radio input to round shape with appropriate caption & style
     &:checked + label {
       border: 1px solid $color-primary;
       border-bottom-width: 1rem;
@@ -296,12 +298,14 @@ body {
         transition: all 0.3s ease-in-out;
       }
     }
+    // Setting up customized radio inputs color
     &[value="graphite"] + label {
       color: $color-graphite;
       &::before {
         background: $color-graphite;
       }
     }
+    // Setting up customized radio inputs color
     &[value="dusk"] + label {
       color: $color-dusk;
       &::before {
@@ -313,6 +317,7 @@ body {
 .input--leg {
   input[type="radio"] {
     display: none;
+    // Transforming simple radio input to Text
     &:not(:checked) + label {
       display: block;
       width: 100px;
@@ -333,6 +338,7 @@ body {
         }
       }
     }
+    // Transforming simple radio input to Text with box & other styling
     &:checked + label {
       border: 1px solid $color-primary;
       border-bottom-width: 1rem;
@@ -356,6 +362,7 @@ body {
         transition: all 0.3s ease-in-out;
       }
     }
+    // Setting up checked and unchecked left radio input's `before` content
     &[value="left"] {
       &:not(:checked) + label {
         &::before {
@@ -368,6 +375,7 @@ body {
         }
       }
     }
+    // Setting up checked and unchecked right radio input's `before` content
     &[value="right"] {
       &:not(:checked) + label {
         &::before {
